@@ -28,12 +28,11 @@ public class Boxer {
 
 	public DocumentSize getPageDimensions() {
 		PDRectangle rect = doc.getPage(0).getMediaBox();
-		return new DocumentSize() {
-			{
-				width = rect.getWidth();
-				height = rect.getHeight();
-			}
-		};
+		DocumentSize docSize = new DocumentSize();
+		docSize.width = rect.getWidth();
+		docSize.height = rect.getHeight();
+
+		return docSize;
 	}
 
 	public void setTrimBox(float x, float y, float w, float h) {
