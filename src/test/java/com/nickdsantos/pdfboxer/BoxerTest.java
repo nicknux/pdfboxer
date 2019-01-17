@@ -25,7 +25,7 @@ public class BoxerTest extends TestCase {
 		String destPdf = currDir + "/src/test/pdfs/TRIMMED_PDF.pdf";
 
 		try {
-			Files.delete(Paths.get(destPdf));
+			Files.deleteIfExists(Paths.get(destPdf));
 			boxer = new Boxer(sourcePdf, destPdf);
 		} catch (IOException e) {
 			fail(e.getMessage());
