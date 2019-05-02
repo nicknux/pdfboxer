@@ -29,6 +29,10 @@ public class BoxerCmd {
 				.desc("Sets the CropBox. Must be passed as x,y,width,height")
 				.build();
 
+		Option mediaBoxOpt = Option.builder("mediaBox").hasArg()
+				.desc("Sets the MediaBox. Must be passed as x,y,width,height")
+				.build();
+
 		Option sourceFileOpt = Option.builder("sourceFile").hasArg().required()
 				.desc("The source pdf").build();
 
@@ -40,6 +44,7 @@ public class BoxerCmd {
 		options.addOption(artBoxOpt);
 		options.addOption(bleedBoxOpt);
 		options.addOption(cropBoxOpt);
+		options.addOption(mediaBoxOpt);
 		options.addOption(sourceFileOpt);
 		options.addOption(destFileOpt);
 
@@ -50,6 +55,7 @@ public class BoxerCmd {
 		String[] artBoxVal = null;
 		String[] bleedBoxVal = null;
 		String[] cropBoxVal = null;
+		String[] mediaBoxVal = null;
 		Boxer boxer = null;
 
 		try {
@@ -62,7 +68,7 @@ public class BoxerCmd {
 			}
 
 			if (cmdLine.hasOption("artBox")) {
-				artBoxVal = cmdLine.getOptionValue("trimBox").split(",", -1);
+				artBoxVal = cmdLine.getOptionValue("artBox").split(",", -1);
 			}
 
 			if (cmdLine.hasOption("bleedBox")) {
@@ -71,6 +77,10 @@ public class BoxerCmd {
 
 			if (cmdLine.hasOption("cropBox")) {
 				cropBoxVal = cmdLine.getOptionValue("cropBox").split(",", -1);
+			}
+
+			if (cmdLine.hasOption("mediaBox")) {
+				mediaBoxVal = cmdLine.getOptionValue("mediaBox").split(",", -1);
 			}
 
 			sourceFileVal = cmdLine.getOptionValue("sourceFile");
@@ -118,6 +128,12 @@ public class BoxerCmd {
 					Float.parseFloat(cropBoxVal[3]));
 		}
 
+		if (mediaBoxVal != null) {
+			boxer.setMediaBox(Float.parseFloat(mediaBoxVal[0]),
+					Float.parseFloat(mediaBoxVal[1]),
+					Float.parseFloat(mediaBoxVal[2]),
+					Float.parseFloat(mediaBoxVal[3]));
+		}
 		try {
 			boxer.save();
 		} catch (IOException e) {

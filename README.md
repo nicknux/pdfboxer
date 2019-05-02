@@ -14,6 +14,7 @@ usage: boxer
  -artBox <arg>       Sets the ArtBox. Must be passed as x,y,width,height
  -bleedBox <arg>     Sets the BleedBox. Must be passed as x,y,width,height
  -cropBox <arg>      Sets the CropBox. Must be passed as x,y,width,height
+ -mediaBox <arg>     Sets the MediaBox. Must be passed as x,y,width,height
  -sourceFile <arg>   The source pdf
  -destFile <arg>     The destination pdf
 ```

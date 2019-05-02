@@ -52,6 +52,10 @@ public class Boxer {
 		changeMap.put("BleedBox", new PDRectangle(x, y, w, h));
 	}
 
+	public void setMediaBox(float x, float y, float w, float h) {
+		changeMap.put("MediaBox", new PDRectangle(x, y, w, h));
+	}
+
 	public void save() throws IOException {
 		PDPageTree pages = doc.getPages();
 		for (int i = 0; i < pages.getCount(); i++) {
@@ -75,6 +79,9 @@ public class Boxer {
 					break;
 				case "BleedBox":
 					p.setBleedBox(rect);
+					break;
+				case "MediaBox":
+					p.setMediaBox(rect);
 					break;
 				}
 			}
