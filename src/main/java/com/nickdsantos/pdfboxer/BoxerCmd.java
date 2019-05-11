@@ -62,7 +62,7 @@ public class BoxerCmd {
 			}
 
 			if (cmdLine.hasOption("artBox")) {
-				artBoxVal = cmdLine.getOptionValue("trimBox").split(",", -1);
+				artBoxVal = cmdLine.getOptionValue("artBox").split(",", -1);
 			}
 
 			if (cmdLine.hasOption("bleedBox")) {
